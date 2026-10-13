@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aprendendo com Alegria</title>
+<style>
+body {
+  margin: 0;
+  background: #fff2b8;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: #333;
+}
+main { padding: 20px; }
+h1 { color: #ff6b35; }
+.letra {
+  font-size: 140px;
+  color: #e63946;
+  font-weight: bold;
+  animation: pular 1s infinite alternate;
+}
+.bicho { font-size: 90px; }
+p { font-size: 24px; }
+button {
+  background: #6c63ff;
+  color: white;
+  border: 0;
+  padding: 15px 24px;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+@keyframes pular {
+  from { transform: translateY(0); }
+  to { transform: translateY(-15px); }
+}
+</style>
+</head>
+<body>
+<main>
+<h1>🌈 Aprendendo com Alegria!</h1>
+<p>Vamos aprender a letra...</p>
+<div class="letra">A</div>
+<div class="bicho">🐝</div>
+<p>A de Abelha!</p>
+<p>Vamos falar juntos: AAAAA!</p>
+<button onclick="ensinar()">🔊 Ouvir historinha</button>
+</main>
+<script>
+function ensinar() {
+  speechSynthesis.cancel();
+  const fala = new SpeechSynthesisUtterance(
+    "Olá, amiguinhos! Hoje vamos aprender a letra A. A de abelha! A, A, A! Muito bem! Vamos aprender brincando!"
+  );
+  fala.lang = "pt-BR";
+  fala.rate = 0.8;
+  speechSynthesis.speak(fala);
+}
+</script>
+</body>
+</html>
