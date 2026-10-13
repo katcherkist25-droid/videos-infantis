@@ -1,0 +1,33 @@
+
+name: Gerar video infantil
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gerar-video:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar projeto
+        uses: actions/checkout@v4
+
+      - name: Instalar ferramentas
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg espeak-ng fonts-dejavu-core
+          python -m pip install --upgrade pip
+          python -m pip install pillow numpy
+
+      - name: Gerar MP4
+        run: python gerar-video.py
+
+      - name: Disponibilizar video
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-infantil-cores
+          path: video_cores.mp4
+          retention-days: 7
